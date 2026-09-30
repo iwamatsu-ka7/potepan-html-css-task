@@ -1,0 +1,681 @@
+/* =========================
+   Reset
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body, div, p, ul, ol, li, dl, dt, dd, table, th, td, img, figure, h1, h2, h3, h4, h5, h6, form, select {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #333;
+  font-family: "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic",sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* =========================
+   Header
+========================= */
+
+/* =========================
+   Logo
+========================= */
+
+.HeaderLogo {
+  display: block;
+}
+
+.HeaderLogo__image--pc {
+  display: block;
+  width: 185px;
+  height: auto;
+}
+
+.HeaderLogo__image--sp {
+  display: none;
+  height: 16px;
+  width: auto;
+}
+
+.HeaderLogo:hover {
+  opacity: 0.7;
+}
+
+
+/* =========================
+   Header
+========================= */
+
+.Header {
+  width: 100%;
+  height: 70px;
+  display: grid;
+  background-color: #fff;
+}
+
+.Header--common {
+  box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.05);
+}
+
+.HeaderContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  padding: 0 36px;
+}
+
+
+/* =========================
+   Navigation
+========================= */
+
+.HeaderNav {
+  margin-left: auto;
+}
+
+.HeaderNavList {
+  display: flex;
+  align-items: center;
+  gap: 45px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.HeaderNavListItem {
+  margin-right: 0;
+}
+
+
+/* =========================
+   Navigation Link
+========================= */
+
+.HeaderNavListItem__link {
+  display: block;
+  color: #000;
+  text-decoration: none;
+  text-align: center;
+}
+
+.HeaderNavListItem__link > span {
+  display: block;
+  font-weight: 700;
+  text-align: center;
+}
+
+.HeaderNavListItem__link > span:first-child {
+  font-family: "Lato", sans-serif;
+  font-size: 12px;
+  line-height: 14.4px;
+}
+
+.HeaderNavListItem__link > span:last-child {
+  font-size: 10px;
+}
+
+.HeaderNavListItem__link:hover{
+  opacity: 0.7;
+}
+
+/* =========================
+   Header Button
+========================= */
+
+.HeaderNavListItem__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 40px;
+  padding: 0 20px;
+  background-color: #F79214;
+  border: none;
+  border-radius: 38px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+.HeaderNavListItem__button:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 767px) {
+  .HeaderNavListItem__button {
+    width: 250px;
+    height: 60px;
+    font-size: 16px;
+  }
+}
+
+
+/* =========================
+   Hamburger
+========================= */
+
+.HeaderNavHamburger {
+  display: none;
+}
+
+#menu-toggle {
+  display: none;
+}
+/* ハンバーガーの線 */
+.HeaderNavHamburger__line {
+  display: block;
+  width: 23px;
+  height: 2px;
+  margin: 6px 0;
+  background-color: #aaa;
+  border-radius: 5px; 
+  transition: 0.3s;
+}
+
+/* チェックされたら1本目を回転 */
+#menu-toggle:checked + .HeaderNavHamburger
+.HeaderNavHamburger__line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+
+/* チェックされたら2本目を消す */
+#menu-toggle:checked + .HeaderNavHamburger
+.HeaderNavHamburger__line:nth-child(2) {
+  opacity: 0;
+}
+
+
+/* チェックされたら3本目を回転 */
+#menu-toggle:checked + .HeaderNavHamburger
+.HeaderNavHamburger__line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* チェックされたらメニューを表示 */
+#menu-toggle:checked ~ .HeaderNavList {
+  transform: translateX(-100%);
+}
+
+/* ==================================================
+   1080px以下
+   ハンバーガーメニュー
+================================================== */
+
+@media screen and (max-width: 1080px) {
+
+  /* Header */
+
+  .Header {
+    position: fixed;
+    z-index: 10;
+  }
+
+  .Header--common {
+    position: fixed !important;
+  }
+
+
+  /* Hamburger */
+
+  .HeaderNavHamburger {
+    display: block;
+    position: relative;
+    width: 24px;
+    height: 17px;
+    margin: auto;
+    z-index: 100;
+    cursor: pointer;
+  }
+
+
+  /* Navigation */
+
+  .HeaderNavList {
+    position: fixed;
+    top: 60px;
+    left: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding-top: 20px;
+    padding-bottom: 75px;
+    gap: 0px;
+    overflow-y: scroll;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: transform 0.5s;
+    z-index: 99;
+    -webkit-overflow-scrolling: touch;
+  }
+
+
+  /* メニューを開いた状態 */
+
+  .HeaderNavList.is-active {
+    transform: translate3d(-100%, 0, 0);
+  }
+
+
+  /* Navigation Item */
+
+  .HeaderNavListItem {
+    margin-right: 0;
+  }
+
+  .HeaderNavListItem:last-of-type {
+    margin-top: 20px;
+  }
+
+
+  /* Navigation Link */
+  .HeaderNavListItem__link {
+    padding: 20px 0;
+  }
+
+  .HeaderNavListItem__link > span:first-child {
+    font-size: 16px;
+    letter-spacing: 5px;
+    color: #fff;
+  }
+
+  .HeaderNavListItem__link > span:last-child {
+    margin-top: 10px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #F79214;
+  }
+
+}
+/* ==================================================
+   767px以下
+   スマホ
+================================================== */
+
+@media screen and (max-width: 767px) {
+
+  /* PCロゴを隠す */
+
+  .HeaderLogo__image--pc {
+    display: none;
+  }
+
+
+  /* SPロゴを表示 */
+
+  .HeaderLogo__image--sp {
+    display: block !important;
+  }
+
+
+  /* Header */
+
+  .Header {
+    height: 70px;
+    padding: 15px 0;
+  }
+
+
+  /* Header Container */
+
+  .HeaderContainer {
+    padding: 0 16px;
+  }
+
+
+  /* Mobile Navigation */
+
+  .HeaderNavList {
+    top: 70px;
+  }
+}
+
+
+/* ==================================================
+   414px以下
+================================================== */
+
+@media screen and (max-width: 414px) {
+
+  /* Header */
+
+  .Header {
+    height: 48px;
+    padding: 0;
+  }
+
+
+  /* Mobile Navigation */
+
+  .HeaderNavList {
+    top: 48px;
+  }
+}
+
+/* =========================
+   Main
+========================= */
+
+/* ==================================================
+   1080px以下
+================================================== */
+
+@media screen and (max-width: 1080px) {
+
+  main {
+    padding-top: 60px;
+  }
+
+}
+
+
+/* ==================================================
+   767px以下
+================================================== */
+
+@media screen and (max-width: 767px) {
+
+  main {
+    padding-top: 52px;
+  }
+
+}
+
+
+/* ==================================================
+   414px以下
+================================================== */
+
+@media screen and (max-width: 414px) {
+
+  main {
+    padding-top: 48px;
+  }
+
+}
+
+
+/* =========================
+   First View
+========================= */
+
+.FirstView {
+  position: relative;
+  width: 100%;
+  height: 739px;
+  overflow: hidden;
+}
+
+
+/* -------------------------
+   First View Background
+------------------------- */
+
+.FirstView__bg-image {
+  position: absolute;
+  z-index: -1;
+}
+
+
+/* 左側の四角 */
+
+.FirstView__bg-image--left-rectangle {
+  top: -70px;
+  left: 0;
+}
+
+
+/* 右側の四角 */
+
+.FirstView__bg-image--right-rectangle {
+  right: 0;
+  bottom: 70px;
+}
+
+
+/* 中央の背景 */
+
+.FirstView__bg-image--fill-rectangle {
+  top: 84px;
+  left: -70px;
+}
+
+
+/* メインビジュアル */
+
+.FirstView__bg-image--main-visual {
+  top: -70px;
+  right: 0;
+  width: 775px;
+}
+
+
+/* スマホ用の1枚画像 */
+
+.FirstView__whole-image {
+  display: none;
+}
+
+
+/* ==================================================
+   767px以下
+   First View
+================================================== */
+
+@media screen and (max-width: 767px) {
+
+  /* First View */
+
+  .FirstView {
+    height: fit-content;
+  }
+
+
+  /* PC用背景画像を非表示 */
+
+  .FirstView__bg-image {
+    display: none;
+  }
+
+
+  /* スマホ用の1枚画像を表示 */
+
+  .FirstView__whole-image {
+    display: block;
+    margin-bottom: 7px;
+    width: 100%;
+  }
+
+}
+
+
+/* =========================
+   First View Container
+========================= */
+
+.FirstView__container {
+  position: relative;
+  max-width: 1040px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 219px;
+}
+
+
+/* ==================================================
+   1080px以下
+================================================== */
+
+@media screen and (max-width: 1080px) {
+
+  .FirstView__container {
+    max-width: none;
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+
+}
+
+
+/* ==================================================
+   767px以下
+================================================== */
+
+@media screen and (max-width: 767px) {
+
+  .FirstView__container {
+    padding-top: 0;
+    padding-right: 16px;
+    padding-bottom: 20px;
+    padding-left: 16px;
+  }
+
+}
+
+
+/* =========================
+   First View Content
+========================= */
+
+.FirstViewContent {
+  position: relative;
+  width: fit-content;
+}
+
+
+/* ==================================================
+   767px以下
+================================================== */
+
+@media screen and (max-width: 767px) {
+
+  .FirstViewContent {
+    width: 100%;
+  }
+
+}
+
+
+/* =========================
+   First View Title
+========================= */
+
+.FirstViewContent__title {
+  color: #333;
+  font-family: "Lato", sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 63px;
+  margin-bottom: 16px;
+}
+
+
+/* ==================================================
+   767px以下
+================================================== */
+
+@media screen and (max-width: 767px) {
+
+  .FirstViewContent__title {
+    font-size: 22px;
+    line-height: 36px;
+    position: relative;
+    width: fit-content;
+  }
+
+}
+
+
+/* =========================
+   First View Badge
+========================= */
+
+.FirstViewContent__badge-image {
+  position: absolute;
+  top: -105px;
+  right: -150px;
+}
+
+
+/* ==================================================
+   767px以下
+================================================== */
+
+@media screen and (max-width: 767px) {
+
+  .FirstViewContent__badge-image {
+    height: 102px;
+    width: 102px;
+    top: -20px;
+    right: -110px;
+  }
+
+}
+
+
+/* =========================
+   First View Button
+========================= */
+
+.FirstViewContent__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 64px;
+  margin-bottom: 16px;
+  padding: 0;
+  background-color: #F79214;
+  border: none;
+  border-radius: 38px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+.FirstViewContent__button:hover {
+  opacity: 0.7;
+}
+
+
+/* ==================================================
+   767px以下
+================================================== */
+
+@media screen and (max-width: 767px) {
+
+  .FirstViewContent__button {
+    width: 100%;
+  }
+
+}
+
+
+/* =========================
+   First View Caption
+========================= */
+
+.FirstViewContent__caption {
+  font-size: 12px;
+  line-height: 16px;
+}
